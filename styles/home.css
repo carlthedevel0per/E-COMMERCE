@@ -1,0 +1,277 @@
+body {
+    margin: 0px;
+}
+
+.navbar {
+    background-color: #991F1F;
+    margin: 0px;
+    padding: 3px;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Roboto Condensed", sans-serif;
+    justify-content: space-between;
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    display: flex;
+}
+.navbar a {
+    text-decoration: none;
+    color: white; 
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+.navbar li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+}
+.navbar a:hover {
+    background-color: white;
+    color: #991F1F;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.navbar img {
+    width: 80px;
+}
+
+.first_section {
+    text-align: center;
+    color: #991F1F;
+    margin: 15%;
+    padding: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.first_section h1 {
+    margin: 0px;
+    font-size: 7em;
+    font-family: "Amarante";
+    text-shadow: 0px 5px 0px black;
+    transition: 0.3s ease;
+}
+.first_section h1::first-letter {
+    color: black;
+    text-shadow: 0px 5px 3px black;
+    font-size: 1em;
+}
+.first_section h2 {
+    margin: 20px;
+    padding: 10px;
+    font-family: "Amarante";
+    text-shadow: 0px 3px 1px black;
+    align-content: center;
+    transition: 0.3s ease;
+}
+.first_section h1:hover {
+    text-shadow: 0px 8px 0px black;
+    cursor: pointer;
+}
+.first_section h2:hover {
+    text-shadow: 0px 4px 2px black;
+    cursor: pointer;
+}
+
+.first_section a:hover { /* this is the button */
+    background-color: white;
+    color: #991F1F;
+    box-shadow: 0px 0px 10px #991F1F;
+}
+.first_section a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-family: "Amarante";
+    width: 120px;
+    height: 70px;
+    margin-top: 35px;
+    border: none;
+    background-color: #991F1F;
+    border-radius: 40px;
+    transition: 0.3s ease;
+}
+.products_header {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: "Amarante";
+    font-size: 4em;
+    color:#991F1F;
+    text-shadow: 0px 5px 0px black;
+}
+.products_header::first-letter {
+    color: black;
+    text-shadow: 0px 5px 3px black;
+    font-size: 1.4em;
+}
+.products-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.products-section .card {
+  flex: 1;
+  transition: all 0.5s ease;
+
+  border: 1px solid #991F1F;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 8px 10px #991F1F;
+  position: relative;
+
+  transition: all 0.5s ease;
+}
+.card:hover {
+  flex: 3;
+  transform: scale(1.05);
+  box-shadow: 15px 15px 5px #991F1F;
+  
+  background-color: #991F1F;
+}
+.card:hover img {
+  filter: blur(3px);
+  
+}
+.card img {
+  width: 250px;
+  height: 150px;
+  transition: all 0.3s ease;
+  
+}
+.card-text {
+  font-family: "Amarante";
+  font-size: 30px;
+  color: white;
+  font-style: bold;
+  
+  opacity: 0;
+  display: flex;
+  position: absolute;
+  transition: 0.3s ease;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(1.2);
+
+  text-shadow: 2px 5px 4px black;
+
+  transition: 0.3s ease;
+  
+}
+.card:hover .card-text {
+  opacity: 1;
+}
+
+#About_header {
+    text-align: center;
+    margin-top: 2em;
+    font-family: "Amarante";
+    font-size: 4em;
+    color:#991F1F;
+    text-shadow: 0px 5px 0px black;
+}
+#About_header::first-letter {
+    color: black;
+    text-shadow: 0px 5px 3px black;
+    font-size: 1.4em;
+}
+#About p {
+    max-width: 600px;
+    font-family: "Roboto Condensed";
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid;
+    background-color: #991F1F;
+    color: white;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+
+}
+#About p:hover {
+    box-shadow: 20px 20px 20px #991F1F;
+    transform: scale(1.05);
+}
+#About {
+    margin-bottom: 10em;
+}
+footer {
+    background-color: #991F1F;
+    display: flex;
+    padding: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+footer a {
+    text-decoration: none;
+}
+#copyright {
+    color: white;
+    font-family: "Roboto Condensed";
+}
+.fa-brands.fa-facebook.fa-2x {
+    color:white;
+}
+.fa-brands.fa-instagram.fa-2x {
+    color:white;
+}
+.fa-brands.fa-twitter.fa-2x {
+    color:white;
+}
+.fa-brands.fa-tiktok.fa-2x {
+    color:white;
+}
+.icon {
+    transition: all 0.3s ease;
+}
+.icon:hover {
+    text-shadow: 0px 0px 5px white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        font-size: 18px;
+    }
+    .first_section h1 {
+        font-size: 5em;
+    }
+    .first_section h2 {
+        font-size: 1.4em;
+    }
+    .first_section a {
+        font-size: 14px;
+    }
+    .products_header {
+        margin-top: 10%;
+        font-size: 3em;
+    }
+    .products-section {
+        flex-direction: column;
+    }
+    .card {
+        max-width: 300px;
+    }
+    .card:hover {
+        transform: scale(1.1);
+    }
+    .card-text {
+        font-size: 25px;
+    }
+    #About_header {
+        font-size: 3em;
+        margin-top: 10%;
+    }
+    #About p {
+        font-size: 18px;
+    }
+}
