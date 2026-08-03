@@ -1,0 +1,249 @@
+body {
+  margin: 0px;
+  padding-top: 80px;
+}
+.tracking-header {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000px;
+}
+
+.tracking-header-left-side {
+  width: 150px;
+}
+
+.header-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+.header-link:hover {
+  border: 2px solid #991F1F;
+}
+
+.cshop-logo {
+  width: 100px;
+  margin-top: 5px;
+}
+
+.tracking-header-middle-side {
+  flex: 1;
+  display: flex;
+  max-width: 850px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.search-button {
+  width: 45px;
+  height: 40px;
+  flex-shrink: 0;
+
+  background-color: #ec0d0d;
+  border: none;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.search-icon {
+  height: 22px;
+  margin-left: -1px;
+  margin-top: 3px;
+}
+.search-bar {
+  flex: 1;
+  width: 0;
+  height: 37px;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  font-family: "Amarante";
+  font-size: 16px;
+}
+
+
+.tracking-header-right-side {
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: end;
+}
+.orders-link {
+  gap: 10px;
+  color: black;
+  font-family: "Amarante";
+}
+
+.returns-text {
+  display: block;
+  font-size: 13px;
+}
+.orders-text {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+}
+.cart-link {
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.cart-icon {
+  width: 90px;
+}
+.cart-quantity {
+  color: white;
+  font-size: 16px;
+  font-family: "Amarante";
+
+  position: absolute;
+  top: 13px;
+  left: 33px;
+
+  width: 40px;
+  text-align: center;
+}
+
+/* PACKAGE DETAILS SECTION */
+
+.back-to-orders-header {
+  text-decoration: none;
+  color: white;
+  font-family: "Amarante";
+  font-size: 10px;
+  display: block;
+
+  border: 1px solid transparent;
+  border-top-left-radius:100px;
+  border-bottom-left-radius: 200px;
+  border-top-right-radius: 100px;
+
+  width: 300px;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
+  background-color: #991F1F;
+  text-shadow: 0px 8px 4px black;
+  box-shadow: 0px 5px 5px black;
+  transition: 0.3s ease;
+}
+.back-to-orders-header:hover {
+  background-color: white;
+  color: black;
+  text-shadow: 0px 4px 4px #991F1F;
+  box-shadow: 5px 0px 5px black;
+  border: 1px solid #991F1F;
+  transform: scale(1.02);
+}
+
+.package-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 3px solid #991F1F;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 80%;
+  margin: 10px auto;
+  margin-top: 20px;
+  box-shadow: 0px 5px 8px black;
+  transition: 0.3s ease;
+}
+.package-details:hover {
+  box-shadow: 0px 10px 8px black;
+}
+.package-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 10px;
+}
+
+.each-package-details {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border: 3px solid #991F1F; 
+  background-color: white;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+
+  box-shadow: 5px 5px 5px black;
+
+  max-width: 400px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 10px 15px;
+
+  transition: 0.3s ease;
+}
+.each-package-details:hover {
+  box-shadow: 8px 8px 5px black;
+  transform: scale(1.02);
+}
+.specific-details {
+  display: flex;
+  flex-direction: column;
+  font-family: "Amarante";
+  gap: 10px;
+}
+.product-image {
+  max-width: 60%;
+  height: auto;
+  object-fit: contain;
+}
+.product-name {
+  font-size: 25px;
+  font-weight: bolder;
+  margin: 0px;
+}
+.product-quantity {
+  font-size: 20px;
+  margin: 0px;
+}
+.arrival-date {
+  font-family: "Amarante";
+  margin: 15px;
+  font-size: 25px;
+  font-weight: bolder;
+  color: black;
+  text-shadow: 0px 0px 2px black;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .back-to-orders-header {
+    font-size: 8px;
+  }
+  .arrival-date {
+    font-size: 20px;
+  }
+  .product-name {
+    font-size: 22px;
+  }
+  .product-quantity {
+    font-size: 18px;
+  }
+  .each-package-details {
+    flex-direction: column;
+  }
+}
+

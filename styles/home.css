@@ -37,17 +37,17 @@ body {
 }
 
 .first_section {
-    text-align: center;
     color: #991F1F;
     margin: 15%;
     padding: 10px;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
+    flex-direction: row;
 }
 .first_section h1 {
     margin: 0px;
-    font-size: 7em;
+    font-size: 100px;
     font-family: "Amarante";
     text-shadow: 0px 5px 0px black;
     transition: 0.3s ease;
@@ -55,22 +55,23 @@ body {
 .first_section h1::first-letter {
     color: black;
     text-shadow: 0px 5px 3px black;
-    font-size: 1em;
+    font-size: 1.3em;
 }
 .first_section h2 {
     margin: 20px;
     padding: 10px;
     font-family: "Amarante";
-    text-shadow: 0px 3px 1px black;
-    align-content: center;
+    text-shadow: 0px 3px 2px black;
     transition: 0.3s ease;
+    font-size: 25px;
+    
 }
 .first_section h1:hover {
     text-shadow: 0px 8px 0px black;
     cursor: pointer;
 }
 .first_section h2:hover {
-    text-shadow: 0px 4px 2px black;
+    text-shadow: 0px 4px 3px black;
     cursor: pointer;
 }
 
@@ -79,15 +80,20 @@ body {
     color: #991F1F;
     box-shadow: 0px 0px 10px #991F1F;
 }
+.first-section-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .first_section a {
     display: block;
-    padding: 10px;
+    padding: 10px 20px;
     text-decoration: none;
     color: white;
     font-family: "Amarante";
-    width: 120px;
-    height: 70px;
-    margin-top: 35px;
+    font-size: 16px;
+    max-width: 120px;
+    height: auto;
     border: none;
     background-color: #991F1F;
     border-radius: 40px;
@@ -182,26 +188,26 @@ body {
     font-size: 1.4em;
 }
 #About p {
-    max-width: 600px;
     font-family: "Roboto Condensed";
     font-size: 20px;
-    justify-content: center;
-    text-align: center;
-    border: 2px solid;
-    background-color: #991F1F;
+    text-align: justify;
     color: white;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-
-}
-#About p:hover {
-    box-shadow: 20px 20px 20px #991F1F;
-    transform: scale(1.05);
 }
 #About {
-    margin-bottom: 10em;
+    max-width: 600px;
+    height: auto;
+    transition: all 0.3s ease;
+    background-color: #991F1F;
+    border-radius: 30px;
+    margin: 30px auto;
+    padding: 10px 20px;
+    margin-bottom: 100px;
+
+    box-shadow: 5px 8px 3px black;
+}
+#About:hover {
+    box-shadow: 7px 10px 3px black;
+    transform: scale(1.02);
 }
 footer {
     background-color: #991F1F;
@@ -242,11 +248,14 @@ footer a {
     .navbar {
         font-size: 18px;
     }
+    .first_section {
+        flex-direction: column;
+    }
     .first_section h1 {
-        font-size: 5em;
+        font-size: 90px;
     }
     .first_section h2 {
-        font-size: 1.4em;
+        font-size: 22px;
     }
     .first_section a {
         font-size: 14px;
@@ -259,7 +268,8 @@ footer a {
         flex-direction: column;
     }
     .card {
-        max-width: 300px;
+        max-width: 500px;
+        height: auto;
     }
     .card:hover {
         transform: scale(1.1);
