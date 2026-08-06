@@ -1,4 +1,13 @@
-export const cart = [];
+export const cart = [
+  {
+    productId: "abc123",
+    quantity: 1
+  },
+  {
+    productId: "def123",
+    quantity: 1
+  }
+];
 
 export function addToCart(productId) {
 
