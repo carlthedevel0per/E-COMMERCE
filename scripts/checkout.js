@@ -1,5 +1,6 @@
-import {cart} from "./data/cart.js";
+import {cart, deleteFromCart} from "./data/cart.js";
 import {products} from "./data/items.js";
+import {formatCurrency} from "./utils/money.js";
 
 /* ORDER SUMMARY BRO
 
@@ -69,57 +70,70 @@ document.querySelector('.js-order-summary')
 
 */
 
-let cartSummaryHTML = '';
+function renderOrderSummary() {
 
-cart.forEach((cartItem) => {
-  const productId = cartItem.productId;
+  let cartSummaryHTML = '';
 
-  let matchingProduct;
+  cart.forEach((cartItem) => {
+    const productId = cartItem.productId;
 
-  products.forEach((product) => {
-    if (productId === product.id) {
-      matchingProduct = product; 
-    }
-  });
+    let matchingProduct;
 
-  console.log(matchingProduct);
+    products.forEach((product) => {
+      if (productId === product.id) {
+        matchingProduct = product; 
+      }
+    });
 
-  cartSummaryHTML += `
+    cartSummaryHTML += `
 
-    <div class="order-details">
-        <img src="${matchingProduct.image}">
-        <div class="order-info">
-          <h1> ${matchingProduct.name} </h1>
+      <div class="order-details">
+          <img src="${matchingProduct.image}">
+          <div class="order-info">
+            <h1> ${matchingProduct.name} </h1>
 
-          <div class="quantity-section">
+            <div class="quantity-section">
 
-            <b> Quantity: </b>
+              <b> Quantity: </b>
 
-            <p> ${cartItem.quantity} </p> 
+              <p> ${cartItem.quantity} </p> 
 
-            <div class="quantity-buttons">
+              <div class="quantity-buttons">
 
-              <button> 
-                UPDATE
-              </button>
-              
-              <button>
-                DELETE
-              </button>
+                <span> 
+                  UPDATE
+                </span>
+                
+                <span class="js-delete-button"
+                data-product-id="${matchingProduct.id}">
+                  DELETE
+                </span>
+
+              </div>
 
             </div>
 
+            <p> <b> Price: </b> $${formatCurrency(matchingProduct.priceCents)}</p>
           </div>
+        
+          </div>
+      `;
 
-          <p> <b> Price: </b> $${(matchingProduct.priceCents * 0.1).toFixed(2)}</p>
-        </div>
-      
-        </div>
-    `;
+  });
 
-});
+  document.querySelector('.js-order-section')
+    .innerHTML = cartSummaryHTML;
 
-document.querySelector('.js-order-section')
-  .innerHTML = cartSummaryHTML;
+  document.querySelectorAll('.js-delete-button')
+    .forEach((button) => {
+      button.addEventListener('click', () => {
+        const productId = button.dataset.productId;
 
+        deleteFromCart(productId);
+        
+        renderOrderSummary();
+      });
+    })
+}
 
+renderOrderSummary();

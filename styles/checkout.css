@@ -166,12 +166,13 @@ body {
   align-items: center;
 }
 
-.quantity-buttons button {
+.quantity-buttons span {
   padding: 5px 15px;
   font-family: "Amarante";
   font-size: 14px;
   font-weight: bolder;
   background-color: white;
+  color: black;
 
   border: 1px solid transparent;
   border-radius: 15px;
@@ -179,7 +180,7 @@ body {
   transition: 0.3s ease;
 }
 
-.quantity-buttons button:hover {
+.quantity-buttons span:hover {
   background-color: #991F1F;
   border: 1px solid white;
   color: white;
