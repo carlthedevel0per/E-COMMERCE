@@ -1,4 +1,4 @@
-import {cart, deleteFromCart} from "./data/cart.js";
+import {cart, deleteFromCart, saveToStorage, updateProductQuantity} from "./data/cart.js";
 import {products} from "./data/items.js";
 import {formatCurrency} from "./utils/money.js";
 
@@ -87,7 +87,7 @@ function renderOrderSummary() {
 
     cartSummaryHTML += `
 
-      <div class="order-details">
+      <div class="order-details js-order-details-${matchingProduct.id}">
           <img src="${matchingProduct.image}">
           <div class="order-info">
             <h1> ${matchingProduct.name} </h1>
@@ -96,12 +96,21 @@ function renderOrderSummary() {
 
               <b> Quantity: </b>
 
-              <p> ${cartItem.quantity} </p> 
+              <p class="quantity-label js-quantity-label"> ${cartItem.quantity} </p>
 
               <div class="quantity-buttons">
 
-                <span> 
+                <span class="update-button js-update-button"
+                data-product-id="${matchingProduct.id}"> 
                   UPDATE
+                </span>
+
+                <input class="quantity-input js-quantity-input" type="number" min="1" value="${cartItem.quantity}"
+                >
+
+                <span class="save-button js-save-button"
+                data-product-id="${matchingProduct.id}"> 
+                  SAVE 
                 </span>
                 
                 <span class="js-delete-button"
@@ -132,8 +141,28 @@ function renderOrderSummary() {
         deleteFromCart(productId);
         
         renderOrderSummary();
+
       });
-    })
+    });
+
+  document.querySelectorAll('.js-update-button')
+    .forEach((button) => {
+      button.addEventListener('click', () => {
+        const productId = button.dataset.productId;
+
+        document.querySelector(`.js-order-details-${productId}`).classList.add('is-editing-quantity');
+      });
+    });
+
+  document.querySelectorAll('.js-save-button')
+    .forEach((button) => {
+      button.addEventListener('click', () => {
+        const productId = button.dataset.productId;
+
+        updateProductQuantity(productId);
+          
+      })
+    });
 }
 
 renderOrderSummary();

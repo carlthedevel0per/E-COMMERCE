@@ -1,5 +1,7 @@
-export let cart = [
-  {
+export let cart =   JSON.parse(localStorage.getItem('cart'));
+
+if (!cart) {
+  cart = [{
     productId: "abc123",
     quantity: 1
   },
@@ -7,7 +9,9 @@ export let cart = [
     productId: "def123",
     quantity: 1
   }
-];
+]
+}
+
 
 export function addToCart(productId) {
 
@@ -29,6 +33,8 @@ export function addToCart(productId) {
         quantity: 1
       });
     }
+
+    saveToStorage();
 }
 
 export function deleteFromCart(productId) {
@@ -43,4 +49,39 @@ export function deleteFromCart(productId) {
 
   cart = newCart;
 
+  saveToStorage();
+
+}
+
+export function updateCartQuantity() {
+   let cartQuantity = 0;
+
+      cart.forEach((item) => {
+        cartQuantity += item.quantity;
+      });
+
+      document.querySelector('.js-cart-quantity')
+        .innerHTML = cartQuantity;
+}
+
+export function updateProductQuantity(productId) {
+
+  const container = document.querySelector(`.js-order-details-${productId}`);
+
+  const newQuantity = container.querySelector('.js-quantity-input').value; 
+
+  if (newQuantity <= 0) {
+    window.alert('Quantity must not be 0 or negative');
+  }
+  else if (newQuantity > 0) {
+    container.classList.remove('is-editing-quantity');
+
+    container.querySelector('.js-quantity-label')
+    .innerHTML = newQuantity;
+  }
+
+}
+
+export function saveToStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
 }

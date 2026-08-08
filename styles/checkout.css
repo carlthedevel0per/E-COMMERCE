@@ -161,7 +161,7 @@ body {
 
 .quantity-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   align-items: center;
 }
@@ -185,6 +185,39 @@ body {
   border: 1px solid white;
   color: white;
   transform: scale(1.05);
+}
+
+.quantity-input {
+  background-color: #991F1F;
+  color: white;
+  border: 1px solid white;
+  font-size: 16px;
+  width: 50px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.save-button {
+  display: none;
+}
+.quantity-input {
+  display: none;
+}
+
+.is-editing-quantity .quantity-input {
+  display: initial;
+}
+
+.is-editing-quantity .save-button {
+  display: initial;
+}
+
+.is-editing-quantity .quantity-label {
+  display: none;
+}
+
+.is-editing-quantity .update-button {
+  display: none;
 }
 
 
