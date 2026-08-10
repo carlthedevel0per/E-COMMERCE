@@ -1,74 +1,8 @@
 import {cart, deleteFromCart, saveToStorage, updateProductQuantity} from "./data/cart.js";
 import {products} from "./data/items.js";
 import {formatCurrency} from "./utils/money.js";
-
-/* ORDER SUMMARY BRO
-
-let orderSummaryHTML = '';
-
-cart.forEach((order) => {
-
-let orderPrice;
-
-if (products.id === order.productId) {
-  orderPrice = order;
-}
-
-const price = orderPrice.priceCents;
-
-console.log(price);
-
-const priceBeforeTax = ((80075 * 10) / 100).toFixed(2);
-const taxPercentage = 10 / 100;
-const taxPrice = priceBeforeTax * taxPercentage;
-const total = (((priceBeforeTax * 100) + (taxPrice * 100)) / 100);
-
-
-orderSummaryHTML += `
-  <div class="summary-container">
-
-        <div class="order-summary">
-          <p> Items (): </p>
-          
-          <p> Shipping fee: </p>
-          
-          <p> Total before tax: </p>
-          
-          <p> Estimated tax (10%): </p>
-          
-          <p> Order total: </p>
-          
-        </div>
-
-        <div class="order-prices">
-          
-          <p> $5,001.10 </p>
-        
-          <p> $0.00</p>
-          
-          <p> $5,001.10</p>
-          
-          <p> $500.11 </p>
-          
-          <p> $5,501.21 </p>
-          
-        </div>
-        
-      </div>
-
-      <div class="place-order-button">
-        <a href="orders.html"> 
-          PLACE YOUR ORDERS
-        </a>
-      </div>
-  `;
-
-});
-
-document.querySelector('.js-order-summary')
-  .innerHTML = orderSummaryHTML;
-
-*/
+import { renderDeliveryOptions } from "./checkout/deliveryOptions.js";
+import { renderOrderSummaryPrices } from "./checkout/orderSummaryPrices.js";
 
 function renderOrderSummary() {
 
@@ -166,3 +100,5 @@ function renderOrderSummary() {
 }
 
 renderOrderSummary();
+renderDeliveryOptions();
+renderOrderSummaryPrices();
