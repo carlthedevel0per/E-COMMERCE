@@ -1,8 +1,10 @@
-import {cart, deleteFromCart, saveToStorage, updateProductQuantity} from "./data/cart.js";
+import {cart, deleteFromCart, saveToStorage, updateProductQuantity, updateCheckoutHeaderQuantity} from "./data/cart.js";
 import {products} from "./data/items.js";
 import {formatCurrency} from "./utils/money.js";
 import { renderDeliveryOptions } from "./checkout/deliveryOptions.js";
 import { renderOrderSummaryPrices } from "./checkout/orderSummaryPrices.js";
+
+updateCheckoutHeaderQuantity();
 
 function renderOrderSummary() {
 
@@ -75,6 +77,7 @@ function renderOrderSummary() {
         deleteFromCart(productId);
         
         renderOrderSummary();
+        renderOrderSummaryPrices();
 
       });
     });
@@ -94,7 +97,8 @@ function renderOrderSummary() {
         const productId = button.dataset.productId;
 
         updateProductQuantity(productId);
-          
+        updateCheckoutHeaderQuantity();
+        renderOrderSummaryPrices();
       })
     });
 }

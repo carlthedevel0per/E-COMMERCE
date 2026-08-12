@@ -64,6 +64,17 @@ export function updateCartQuantity() {
         .innerHTML = cartQuantity;
 }
 
+export function updateCheckoutHeaderQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((item) => {
+    cartQuantity += item.quantity;
+  });
+
+  document.querySelector('.js-checkout-quantity')
+    .innerHTML = `CHECKOUT (${cartQuantity}) Items`;
+}
+
 export function updateProductQuantity(productId) {
 
   const container = document.querySelector(`.js-order-details-${productId}`);
@@ -74,6 +85,13 @@ export function updateProductQuantity(productId) {
     window.alert('Quantity must not be 0 or negative');
   }
   else if (newQuantity > 0) {
+
+    cart.forEach((cartItem) => {
+      if (cartItem.productId === productId) {
+        cartItem.quantity = Number(newQuantity);
+      }
+    });
+
     container.classList.remove('is-editing-quantity');
 
     container.querySelector('.js-quantity-label')

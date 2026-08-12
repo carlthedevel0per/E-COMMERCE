@@ -1,10 +1,11 @@
-import {cart} from "../data/cart.js";
+import {cart, updateCheckoutHeaderQuantity} from "../data/cart.js";
 import {products} from "../data/items.js";
 
 export function renderOrderSummaryPrices() {
 
 let totalPrice = 0;
 let orderSummaryHTML = '';
+let cartItems = 0;
 
 cart.forEach((cartItem) => {
 
@@ -16,6 +17,10 @@ cart.forEach((cartItem) => {
     }
   });
 
+  if (cartItem.productId === productId) {
+    cartItems += cartItem.quantity;
+  }
+
 });
 
   const dollarPrice = (totalPrice / 100).toFixed(2);
@@ -26,13 +31,13 @@ cart.forEach((cartItem) => {
 
   const taxPrice = (taxPercentage * dollarPrice).toFixed(2);
 
-  const finalTotal = ((dollarPrice * 100) + (taxPrice * 100)) / 100;
+  const finalTotal = (((dollarPrice * 100) + (taxPrice * 100)) / 100).toFixed(2);
 
   orderSummaryHTML = `
     <div class="summary-container">
 
           <div class="order-summary">
-            <p> Items (): </p>
+            <p> Items (${cartItems}): </p>
             
             <p> Shipping fee: </p>
             
