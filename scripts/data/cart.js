@@ -13,7 +13,7 @@ if (!cart) {
 }
 
 
-export function addToCart(productId) {
+export function addToCart(productId, quantityValue) {
 
     let matchingItem;
 
@@ -24,13 +24,13 @@ export function addToCart(productId) {
     });
 
     if (matchingItem) {
-      matchingItem.quantity += 1;
+      matchingItem.quantity += quantityValue;
     }
 
     else {
       cart.push({
         productId: productId,
-        quantity: 1
+        quantity: quantityValue
       });
     }
 
@@ -62,6 +62,7 @@ export function updateCartQuantity() {
 
       document.querySelector('.js-cart-quantity')
         .innerHTML = cartQuantity;
+
 }
 
 export function updateCheckoutHeaderQuantity() {
@@ -90,6 +91,8 @@ export function updateProductQuantity(productId) {
       if (cartItem.productId === productId) {
         cartItem.quantity = Number(newQuantity);
       }
+
+      saveToStorage();
     });
 
     container.classList.remove('is-editing-quantity');

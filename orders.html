@@ -22,8 +22,8 @@
     </div>
 
     <div class="orders-header-middle-section">
-      <input type="text" placeholder="Search" class="search-bar">
-      <button class="search-button"> 
+      <input type="text" placeholder="Search" class="search-bar js-input-box">
+      <button class="search-button js-search-button"> 
         <img src="Photos/search-icon.png" class="search-icon">
       </button>
   
@@ -38,7 +38,7 @@
       
       <a href="checkout.html" class="cart-link header-link">
         <img src="Photos/cart-icon.png" class="cart-icon">
-        <span class="cart-quantity"> 0 </span>
+        <span class="cart-quantity js-cart-quantity"> 0 </span>
       </a>
       
     </div>
@@ -47,76 +47,11 @@
 
   <h1 class="order-header"> YOUR ORDERS </h1>
 
-  <div class="orders-section">
-
-    <div class="order-details-container">
-
-      <div class="order-specific-info">
-
-        <div class="order-place">
-            <p> 
-              <b> Order Placed: </b> 
-              July 29 
-            </p>
-        </div>
-
-        <div class="order-total">
-            <p> 
-              <b> Total: </b> 
-              $5,501.21 
-            </p>
-          
-        </div>
-
-        <div class="order-id">
-          
-            <p> 
-              <b> Order ID: </b> abcedh02134casdsa 
-            </p>
-          
-        </div>
-
-        <div class="order-arriving-time">
-            <p> 
-              <b> Arriving on: </b>
-               August 5 
-            </p>
-        </div>
-
-      </div>
-
-
-      <div class="track-package">
-        <a href="tracking.html"> Track Package </a>
-      </div>
-
-      <div class="order-product-details">
-
-        <div class="each-order-product">
-          <img src="Photos/pistol.png" 
-          class="order-image">
-            <div class="each-order-product-details">
-              <p class="product-name"> PISTOL </p>
-              <p class="product-quantity"> <b> Quantity: </b> 1</p>
-            </div>
-        </div>
-
-        <div class="each-order-product">
-          <img src="Photos/sniper.png" class="order-image">
-            <div class="each-order-product-details">
-              <p class="product-name"> SNIPER </p>
-              <p> <b> Quantity: </b> 1 </p>
-            </div>
-        </div>
-
-      </div>
-
-
-    </div>
+  <div class="orders-section js-orders-section">
 
   </div>
   
-<body>
-  
+  <script type="module"src="scripts/orders.js"> </script>
+
 </body>
 </html>

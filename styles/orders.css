@@ -166,6 +166,7 @@ body {
   max-width: 60%;
   height: auto;
   padding: 10px;
+  
 }
 .order-product-details {
   display: grid;
@@ -245,6 +246,9 @@ body {
 }
 
 @media (max-width: 768px) {
+  .orders-section {
+    flex-direction: column;
+  }
   .order-header {
     font-size: 30px;
     text-align: center;
@@ -262,7 +266,7 @@ body {
     text-align: center;
     gap: 20px;
 
-    margin: 10px;
+    margin: 10px auto;
   }
   .product-name {
     font-size: 22px;

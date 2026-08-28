@@ -1,4 +1,4 @@
-import {cart, deleteFromCart, saveToStorage, updateProductQuantity, updateCheckoutHeaderQuantity} from "./data/cart.js";
+import {cart, deleteFromCart, updateProductQuantity, updateCheckoutHeaderQuantity} from "./data/cart.js";
 import {products} from "./data/items.js";
 import {formatCurrency} from "./utils/money.js";
 import { renderDeliveryOptions } from "./checkout/deliveryOptions.js";
@@ -28,11 +28,13 @@ function renderOrderSummary() {
           <div class="order-info">
             <h1> ${matchingProduct.name} </h1>
 
-            <div class="quantity-section">
+            <p class="quantity-label js-quantity-label"> 
+            
+            <b> Quantity: </b>
+            
+            ${cartItem.quantity}
 
-              <b> Quantity: </b>
-
-              <p class="quantity-label js-quantity-label"> ${cartItem.quantity} </p>
+            </p>
 
               <div class="quantity-buttons">
 
@@ -56,7 +58,7 @@ function renderOrderSummary() {
 
               </div>
 
-            </div>
+            
 
             <p> <b> Price: </b> $${formatCurrency(matchingProduct.priceCents)}</p>
           </div>
@@ -78,6 +80,7 @@ function renderOrderSummary() {
         
         renderOrderSummary();
         renderOrderSummaryPrices();
+        updateCheckoutHeaderQuantity();
 
       });
     });
@@ -99,6 +102,7 @@ function renderOrderSummary() {
         updateProductQuantity(productId);
         updateCheckoutHeaderQuantity();
         renderOrderSummaryPrices();
+
       })
     });
 }

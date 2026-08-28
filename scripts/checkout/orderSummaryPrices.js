@@ -1,5 +1,11 @@
-import {cart, updateCheckoutHeaderQuantity} from "../data/cart.js";
+import {cart, saveToStorage} from "../data/cart.js";
+import { selectedDeliveryOption } from "../data/deliverySelection.js";
 import {products} from "../data/items.js";
+import {orders} from "../data/placeOrders.js";
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+
+import { formatCurrency } from "../utils/money.js";
+
 
 export function renderOrderSummaryPrices() {
 
@@ -10,28 +16,34 @@ let cartItems = 0;
 cart.forEach((cartItem) => {
 
   const productId = cartItem.productId;
+  cartItems += cartItem.quantity;
 
   products.forEach((product) => {
     if (product.id === productId) {
      totalPrice += product.priceCents * cartItem.quantity;
-    }
+      }
+    });
+
   });
 
-  if (cartItem.productId === productId) {
-    cartItems += cartItem.quantity;
+  let shippingFee = selectedDeliveryOption.priceCents; 
+
+  let dollarPrice = ((shippingFee / 100) + (totalPrice / 100)).toFixed(2);
+
+  let taxPercentage = 10 / 100;
+
+  let taxPrice = (taxPercentage * dollarPrice).toFixed(2);
+
+  let finalTotal = (((dollarPrice * 100) + (taxPrice * 100) + (shippingFee)) / 100).toFixed(2);
+
+  if (cart.length === 0) {
+    shippingFee = 0;
+    dollarPrice = formatCurrency(0);
+    taxPercentage = formatCurrency(0);
+    taxPrice = formatCurrency(0);
+    finalTotal = formatCurrency(0);
   }
 
-});
-
-  const dollarPrice = (totalPrice / 100).toFixed(2);
-
-  const shippingFee = 0;
-
-  const taxPercentage = 10 / 100;
-
-  const taxPrice = (taxPercentage * dollarPrice).toFixed(2);
-
-  const finalTotal = (((dollarPrice * 100) + (taxPrice * 100)) / 100).toFixed(2);
 
   orderSummaryHTML = `
     <div class="summary-container">
@@ -53,7 +65,7 @@ cart.forEach((cartItem) => {
             
             <p> $${dollarPrice} </p>
           
-            <p> $${shippingFee}</p>
+            <p class="js-shipping-fee"> $${formatCurrency(shippingFee)}</p>
             
             <p> $${dollarPrice}</p>
             
@@ -65,8 +77,8 @@ cart.forEach((cartItem) => {
           
         </div>
 
-        <div class="place-order-button">
-          <a href="orders.html"> 
+        <div class="place-order-button js-place-order-button">
+          <a> 
             PLACE YOUR ORDERS
           </a>
         </div>
@@ -74,4 +86,27 @@ cart.forEach((cartItem) => {
 
     document.querySelector('.js-order-summary')
       .innerHTML = orderSummaryHTML;
+
+    document.querySelector('.js-place-order-button')
+      .addEventListener('click', () => {
+
+        orders.push({
+          id: crypto.randomUUID(),
+          cart: [...cart],
+          deliveryOption: selectedDeliveryOption,
+          orderDate: dayjs().toISOString()
+        });
+
+        localStorage.setItem('orders', JSON.stringify(orders));
+       
+        window.location.href = '../../orders.html';
+
+        cart.length = 0;
+
+        saveToStorage();
+
+
+      });
 }
+
+
